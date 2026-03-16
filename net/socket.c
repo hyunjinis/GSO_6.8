@@ -109,9 +109,10 @@
 #include <linux/errqueue.h>
 #include <linux/ptp_clock_kernel.h>
 #include <trace/events/sock.h>
+//modified*****
 #include <linux/spinlock.h>
 static DEFINE_SPINLOCK(custom_send_lock);
-
+//*****
 #ifdef CONFIG_NET_RX_BUSY_POLL
 unsigned int sysctl_net_busy_read __read_mostly;
 unsigned int sysctl_net_busy_poll __read_mostly;
@@ -2166,6 +2167,7 @@ int __sys_sendto(int fd, void __user *buff, size_t len, unsigned int flags,
 	int err;
 	struct msghdr msg;
 	int fput_needed;
+	//modified*****
 	struct iovec iov[30];  // 30개의 iovec 버퍼
         struct iov_iter iter;
         static int iov_index = 0;
@@ -2203,6 +2205,7 @@ int __sys_sendto(int fd, void __user *buff, size_t len, unsigned int flags,
 	if (unlikely(err))
 		return err;
 sock:
+//*****
 	msg.msg_name = NULL;
 	msg.msg_control = NULL;
 	msg.msg_controllen = 0;
