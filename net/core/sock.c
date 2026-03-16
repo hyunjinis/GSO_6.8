@@ -1133,6 +1133,7 @@ int sk_setsockopt(struct sock *sk, int level, int optname,
 	case SO_PASSPIDFD:
 		assign_bit(SOCK_PASSPIDFD, &sock->flags, valbool);
 		return 0;
+	//modified*****
 	case SO_CUSTOM_FLAG:
         	if (val == 1)
         	{
@@ -1143,6 +1144,7 @@ int sk_setsockopt(struct sock *sk, int level, int optname,
             		sk->custom_flag = 0;
         	}
         	return 0;
+	//*****
 	case SO_TYPE:
 	case SO_PROTOCOL:
 	case SO_DOMAIN:
